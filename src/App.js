@@ -4,6 +4,18 @@ import './App.css';
 import {Toggle} from "./Toggle";
 import {ToggleGroup} from "./ToggleGroup";
 
+const questionsCorrectToColourMap = {
+    0: ['#fa9161', '#f73b1c'],
+    1: ['#E79455', '#DE662F'],
+    2: ['#F1D469', '#E6A133'],
+    3: ['#47e4c1', '#07cddd']
+};
+
+function getBackground(numCorrect) {
+    const [from, to] = questionsCorrectToColourMap[numCorrect];
+    return `linear-gradient(to bottom, ${from}, ${to})`;
+}
+
 class App extends Component {
 
     constructor() {
@@ -16,9 +28,12 @@ class App extends Component {
     }
 
     render() {
+        const questionsCorrect = ['warm', 'water', 'food']
+            .map(prop => this.state[prop])
+            .reduce((numCorrect, questionCorrect) => questionCorrect ? numCorrect + 1 : numCorrect, 0);
         return (
             <div className="container">
-                <ToggleGroup title="Ideal conditions for bacterial growth" isCorrect={this.state.food && this.state.warm && this.state.water}>
+                <ToggleGroup background={getBackground(questionsCorrect)} title="Ideal conditions for bacterial growth" isCorrect={this.state.food && this.state.warm && this.state.water}>
                     <Toggle falseLabel="Cold" trueLabel="Warm" value={this.state.warm}
                             onToggle={(val => this.setState({warm: val})).bind(this)}></Toggle>
                     <Toggle falseLabel="No water" trueLabel="Water" value={this.state.water}
