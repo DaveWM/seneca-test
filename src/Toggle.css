@@ -31,6 +31,6 @@
     position: absolute;
     height: 100%;
     width: 50%;
-    transition: 0.5s linear left;
+    transition: 0.25s linear left;
     box-shadow: 0 0 6px 1px rgba(1, 115, 101, 0.5);
 }
