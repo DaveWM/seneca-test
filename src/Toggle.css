@@ -1,0 +1,36 @@
+.toggle {
+    display: flex;
+    align-items: stretch;
+    height: 45px;
+    border: 1px solid white;
+    border-radius: 100px;
+    position: relative;
+}
+
+.toggle__option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    cursor: pointer;
+    transition: 0.5s ease color;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+    text-align: center;
+    color: rgba(255,255,255, 0.8);
+}
+
+.toggle__option--selected {
+    color: rgba(0,0,0, 0.8);
+}
+
+.toggle__selected {
+    background-color: rgba(255,255,255, 0.5);
+    border-radius: 100px;
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    transition: 0.5s linear left;
+    box-shadow: 0 0 6px 1px rgba(1, 115, 101, 0.5);
+}
